@@ -1,22 +1,20 @@
-<h1 align="center">WLK</h1>
-<p align="center"><b>WhisperLiveKit: Ultra-low-latency, self-hosted speech-to-text with speaker identification</b></p>
-
+<h1 align="center">WhisperLiveKit</h1>
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/QuentinFuxa/WhisperLiveKit/refs/heads/main/demo.png" alt="WhisperLiveKit Demo" width="730">
 </p>
 
+<p align="center"><b>Real-time, Fully Local Speech-to-Text with Speaker Identification</b></p>
 
 <p align="center">
 <a href="https://pypi.org/project/whisperlivekit/"><img alt="PyPI Version" src="https://img.shields.io/pypi/v/whisperlivekit?color=g"></a>
 <a href="https://pepy.tech/project/whisperlivekit"><img alt="PyPI Downloads" src="https://static.pepy.tech/personalized-badge/whisperlivekit?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=installations"></a>
 <a href="https://pypi.org/project/whisperlivekit/"><img alt="Python Versions" src="https://img.shields.io/badge/python-3.9--3.15-dark_green"></a>
-<a href="https://huggingface.co/qfuxa/whisper-base-french-lora">
-  <img alt="Hugging Face Weights" src="https://img.shields.io/badge/🤗-Hugging%20Face%20Weights-yellow" />
-</a>
 <a href="https://github.com/QuentinFuxa/WhisperLiveKit/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache 2.0-dark_green"></a>
 </p>
 
+
+Real-time transcription directly to your browser, with a ready-to-use backend+server and a simple frontend.
 
 #### Powered by Leading Research:
 
@@ -161,7 +159,6 @@ async def websocket_endpoint(websocket: WebSocket):
 | `--ssl-keyfile` | Path to the SSL private key file (for HTTPS support) | `None` |
 | `--forwarded-allow-ips` | Ip or Ips allowed to reverse proxy the whisperlivekit-server. Supported types are  IP Addresses (e.g. 127.0.0.1), IP Networks (e.g. 10.100.0.0/16), or Literals (e.g. /path/to/socket.sock) | `None` |
 | `--pcm-input` | raw PCM (s16le) data is expected as input and FFmpeg will be bypassed. Frontend will use AudioWorklet instead of MediaRecorder | `False` |
-| `--lora-path` | Path or Hugging Face repo ID for LoRA adapter weights (e.g., `qfuxa/whisper-base-french-lora`). Only works with native Whisper backend (`--backend whisper`) | `None` |
 
 | Translation options | Description | Default |
 |-----------|-------------|---------|
@@ -271,5 +268,7 @@ docker run --gpus all -p 8000:8000 --name wlk wlk --model large-v3 --language fr
   - `HF_PRECACHE_DIR="./.cache/"` - Pre-load a model cache for faster first-time start
   - `HF_TKN_FILE="./token"` - Add your Hugging Face Hub access token to download gated models
 
+Note: A new feature has been added, where you can assign custom names to each Speaker-ID. This feature only works properly, if `--diarization` is passed.
+Without Diarization, only the first name set will affect anything. 
 ## 🔮 Use Cases
 Capture discussions in real-time for meeting transcription, help hearing-impaired users follow conversations through accessibility tools, transcribe podcasts or videos automatically for content creation, transcribe support calls with speaker identification for customer service...
